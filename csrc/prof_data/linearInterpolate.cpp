@@ -1,0 +1,41 @@
+/* -------------------------------------------------------------------------
+ * This file is part of the MindStudio project.
+ * Copyright (c) 2025 Huawei Technologies Co.,Ltd.
+ *
+ * MindStudio is licensed under Mulan PSL v2.
+ * You can use this software according to the terms and conditions of the Mulan PSL v2.
+ * You may obtain a copy of Mulan PSL v2 at:
+ *
+ *          http://license.coscl.org.cn/MulanPSL2
+ *
+ * THIS SOFTWARE IS PROVIDED ON AN "AS IS" BASIS, WITHOUT WARRANTIES OF ANY KIND,
+ * EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO NON-INFRINGEMENT,
+ * MERCHANTABILITY OR FIT FOR A PARTICULAR PURPOSE.
+ * See the Mulan PSL v2 for more details.
+ * ------------------------------------------------------------------------- */
+
+#include <map>
+#include <cstdint>
+#include <cmath>
+#include <limits>
+
+namespace Mskpp {
+double LinearInterpolate(const std::map<uint32_t, double>& curves, uint32_t x)
+{
+    if (curves.empty()) {
+        return 0.0;
+    }
+    if (x <= curves.begin()->first) {
+        return curves.begin()->second;
+    } else if (x >= curves.rbegin()->first) {
+        return curves.rbegin()->second;
+    }
+    auto right = curves.upper_bound(x);
+    auto left = std::prev(right, 1);
+    if (std::fabs(right->first - left->first) <= std::numeric_limits<double>::epsilon()) {
+        return 0.0;
+    }
+    return ((x - left->first) * right->second + (right->first - x) * left->second) /
+           (right->first - left->first);
+}
+}
