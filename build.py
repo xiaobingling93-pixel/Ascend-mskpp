@@ -25,17 +25,10 @@ import argparse
 
 
 def exec_cmd(cmd):
-    result = subprocess.run(cmd, capture_output=False, text=True, timeout=3600)
+    result = subprocess.run(cmd, capture_output=False, text=True, timeout=36000)
     if result.returncode != 0:
         logging.error("execute command %s failed, please check the log", " ".join(cmd))
         sys.exit(result.returncode)
-
-
-def update_submodle():
-    logging.info("============ start download thirdparty code using git submodule ============")
-    cmd = ["git", "submodule", "update", "--init", "--recursive", "--depth=1", "--jobs=4"]
-    exec_cmd(cmd)
-    logging.info("============ download thirdparty code  success ============")
 
 
 def execute_make(build_path, cmake_cmd, make_cmd):
@@ -98,7 +91,8 @@ if __name__ == "__main__":
 
     # 2. 更新代码：只有测试构建时才会依赖更新三方代码
     if 'test' in args.command and 'local' not in args.command:
-        update_submodle()
+        from download_dependencies import update_submodule
+        update_submodule(args)
 
     # 3. 执行构建
     os.chdir(current_dir)
