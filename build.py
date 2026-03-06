@@ -72,7 +72,7 @@ class BuildManager:
         ut_build_dir.mkdir(exist_ok=True)
         os.chdir(ut_build_dir)
 
-        self._execute_command(["cmake", "..", "-DBUILD_TESTS=ON"])
+        self._execute_command(["cmake", "..", "-DBUILD_TESTS=ON", "-DCMAKE_BUILD_TYPE=Debug"])
         self._execute_command(["make", "-j", str(self.build_jobs), "install"])
 
         logging.info("============ start to execute C++ code UT test ============")
