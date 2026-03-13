@@ -50,7 +50,7 @@ plotly>=5.11.0
 ### 安装whl包
 ```
 cd output
-pip install mskpp-xxxxx.whl
+pip install mindstudio_kpp-xxxxx.whl
 ```
 
 # 安装后配置
@@ -73,7 +73,7 @@ pip uninstall mskpp-xxxxx.whl
 # 升级
 如需使用whl包替换运行环境原有已安装的whl包，执行如下安装操作：
 ```
-pip install mskpp-xxxxx.whl --force-reinstall
+pip install mindstudio_kpp-xxxxx.whl --force-reinstall
 ```
 安装过程中，若提示是否替换原有安装包：
 输入"y"，则安装包会自动完成升级操作。

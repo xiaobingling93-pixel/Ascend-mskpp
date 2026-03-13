@@ -4,7 +4,7 @@ from packaging.tags import sys_tags
 tag = next(sys_tags())
 
 setup(
-    name = 'mskpp',
+    name = 'mindstudio-kpp',
     version = '1.0.0',
     author =' mskpp',
     author_email = 'mskpp',
