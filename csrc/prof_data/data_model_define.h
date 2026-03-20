@@ -35,9 +35,9 @@ public:
     {
         creator_[name] = creator;
     }
-    std::shared_ptr<T> Create(const std::string name, Args... args)
+    std::shared_ptr<T> Create(const std::string name, Args... args) const
     {
-        return creator_.find(name) == creator_.end() ? std::shared_ptr<T>() : creator_[name](args...);
+        return creator_.find(name) == creator_.end() ? std::shared_ptr<T>() : creator_.at(name)(args...);
     }
 
 private:

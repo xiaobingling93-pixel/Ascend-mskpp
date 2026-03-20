@@ -44,7 +44,7 @@ public:
     /* IsBlocked will not re-judge blocking status, while IsBlockingReleased will */
     bool IsBlocked() const;
     bool IsBlockingReleased();
-    bool IsFinished();
+    bool IsFinished() const;
     uint64_t GetPriority() const;
     std::string GetFirstTaskName();
     void DumpTasksInfo();

@@ -58,7 +58,7 @@ void TaskSchedule::SetDebugMode(bool mode)
     debugMode = mode;
 }
 
-bool TaskSchedule::GetDebugMode()
+bool TaskSchedule::GetDebugMode() const
 {
     return debugMode;
 }

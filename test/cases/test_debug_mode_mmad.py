@@ -69,7 +69,7 @@ class TestDebugMode(TestBase):
                 in_x = Tensor("GM", "FP16", [32, 48], format="ND")
                 in_y = Tensor("GM", "FP16", [48, 16], format="ND")
                 in_z = Tensor("GM", "FP32", [32, 16], format="NC1HWC0")
-                no_remain_task_mmad(in_x, in_y, in_z)
+                _ = no_remain_task_mmad(in_x, in_y, in_z)
 
         self.assertTrue(not os.path.exists(self.TRACE_FILE))
         self.assertTrue(not os.path.exists(self.HTML_FILE))
@@ -82,7 +82,7 @@ class TestDebugMode(TestBase):
                     in_x = Tensor("GM", "FP16", [32, 48], format="ND")
                     in_y = Tensor("GM", "FP16", [48, 16], format="ND")
                     in_z = Tensor("GM", "FP32", [32, 16], format="NC1HWC0")
-                    has_remained_task_mmad(in_x, in_y, in_z)
+                    _ = has_remained_task_mmad(in_x, in_y, in_z)
         self.assertRaises(Exception, case0)
         self.clean()
 

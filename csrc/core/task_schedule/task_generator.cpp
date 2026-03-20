@@ -97,14 +97,14 @@ std::shared_ptr<Pipeline> TaskGenerator::GetNextPipe()
     return lastReturnedPipe;
 }
 
-bool TaskGenerator::IsAllPipesFinished()
+bool TaskGenerator::IsAllPipesFinished() const
 {
     return (pipesAll.empty() && pipesBlocked.empty() && pipesActive.empty());
 }
 
-void TaskGenerator::DumpBlockedPipesInfo()
+void TaskGenerator::DumpBlockedPipesInfo() const
 {
-    for (auto& pipe : pipesBlocked) {
+    for (const auto& pipe : pipesBlocked) {
         std::cout << "[DEBUG] Pipe " << pipe->GetName() << " " << pipe->GetFirstTaskName() << " is blocked."
         << std::endl;
     }

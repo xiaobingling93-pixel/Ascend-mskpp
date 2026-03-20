@@ -42,8 +42,8 @@ public:
     void AddTask(RawTask& task);
     /* return highest-priority pipe, while return nullptr when no pipe can be scheduled */
     std::shared_ptr<Pipeline> GetNextPipe();
-    bool IsAllPipesFinished();
-    void DumpBlockedPipesInfo();
+    bool IsAllPipesFinished() const;
+    void DumpBlockedPipesInfo() const;
     void Clear();
 
 private:

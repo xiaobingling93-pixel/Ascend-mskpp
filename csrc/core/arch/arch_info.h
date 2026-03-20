@@ -50,8 +50,8 @@ public:
     std::string GetChipType();
     void SetCacheHitRatio(double ratio);
     double GetCacheHitRatio() const;
-    bool IsMteIdValid(const std::string& fromType, const std::string& toType);
-    int GetFreq();
+    bool IsMteIdValid(const std::string& fromType, const std::string& toType) const;
+    int GetFreq() const;
 
 private:
     ChipType chipType_;

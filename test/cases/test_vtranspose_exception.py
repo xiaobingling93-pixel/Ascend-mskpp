@@ -41,7 +41,7 @@ class TestUtilsMethods(TestBase):
     def test_vtranspose_normal(self):
         in_x = Tensor("GM", "FP16", [16, 16], format="ND")
         in_y = Tensor("GM", "FP16", [16, 16], format="ND")
-        my_vtranspose(in_x, in_y)
+        _ = my_vtranspose(in_x, in_y)
         self.clean()
 
     def test_vtranspose_abnormal(self):

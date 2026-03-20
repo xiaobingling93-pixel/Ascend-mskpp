@@ -45,7 +45,7 @@ public:
     int32_t Run();
     void Clear();
     void SetDebugMode(bool mode);
-    bool GetDebugMode();
+    bool GetDebugMode() const;
 
 private:
     bool debugMode = false;

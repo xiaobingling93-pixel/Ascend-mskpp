@@ -64,4 +64,4 @@ if __name__ == '__main__':
             in_x = Tensor("GM", "FP16", [32, 48], format="ND")
             in_y = Tensor("GM", "FP16", [48, 16], format="ND")
             in_z = Tensor("GM", "FP32", [32, 16], format="NC1HWC0")
-            my_mmad(in_x, in_y, in_z)
+            _ = my_mmad(in_x, in_y, in_z)

@@ -20,7 +20,6 @@
 #include <vector>
 #include <string>
 #include <map>
-#include <algorithm>
 
 namespace Mskpp {
 /**

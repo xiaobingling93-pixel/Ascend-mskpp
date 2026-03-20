@@ -76,7 +76,7 @@ bool Pipeline::IsBlocked() const
     return blocked;
 }
 
-bool Pipeline::IsFinished()
+bool Pipeline::IsFinished() const
 {
     return tasks.empty();
 }

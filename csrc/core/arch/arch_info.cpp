@@ -183,9 +183,9 @@ double ArchInfo::GetCacheHitRatio() const
     return cacheHitRatio_;
 }
 
-bool ArchInfo::IsMteIdValid(const std::string& fromType, const std::string& toType)
+bool ArchInfo::IsMteIdValid(const std::string& fromType, const std::string& toType) const
 {
-    for (auto &m : this->mte_) {
+    for (const auto &m : this->mte_) {
         if ((m.first == fromType) && (m.second == toType)) {
             return true;
         }
@@ -193,7 +193,7 @@ bool ArchInfo::IsMteIdValid(const std::string& fromType, const std::string& toTy
     return false;
 }
 
-int ArchInfo::GetFreq()
+int ArchInfo::GetFreq() const
 {
     return freq_;
 }
