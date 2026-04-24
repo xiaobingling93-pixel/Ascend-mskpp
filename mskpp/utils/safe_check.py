@@ -18,6 +18,7 @@
 
 import os
 import stat
+from mskpp.utils import logger
 
 MAX_FILE_SIZE = 10 * 1024 ** 2
 MAX_LIB_SIZE = 10 * 1024 ** 3
@@ -31,7 +32,7 @@ def check_input_file(path, threshold=MAX_FILE_SIZE):
         raise OSError(f'{path} is not a valid file path.')
     path = os.path.abspath(path)
     if os.path.islink(path):
-        raise OSError(f"Path {path} shouldn't be a soft link.")
+        logger.warning(f'The path {path} is insecure because is a soft link.')
     if not os.access(path, os.R_OK):
         raise PermissionError(f'Path {path} is not readable.')
     if os.path.getsize(path) >= threshold:
@@ -50,9 +51,9 @@ def check_path_owner_consistent(path):
 def check_group_others_w_permission(path):
     mode = os.stat(path).st_mode
     if mode & stat.S_IWGRP:
-        raise PermissionError(f'Path {path} cannot have write permission of group.')
+        logger.warning(f'The path {path} is insecure because users in the same group have write permission.')
     if mode & stat.S_IWOTH:
-        raise PermissionError(f'Path {path} cannot have write permission of other users.')
+        logger.warning(f'The path {path} is insecure because users in the other groups have write permission.')
 
 
 def check_variable_type(var, expected_type):
